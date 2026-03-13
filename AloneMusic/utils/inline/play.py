@@ -70,8 +70,10 @@ def stream_markup_timer(_, chat_id, played, dur):
     buttons = [
         [
             InlineKeyboardButton(
-                text=f"{played} {bar} {remaining}",
-                url=f"https://t.me/{app.username}?startgroup=true",
+                text=f"{played} {bar} {dur}",
+                callback_data="GetTimer",
+                style=ButtonStyle.PRIMARY,
+                icon_custom_emoji_id=5204046146955153467
             )
         ],
         [
