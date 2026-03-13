@@ -11,7 +11,6 @@ import math
 
 from pyrogram.types import InlineKeyboardButton
 
-from AloneMusic import app
 from AloneMusic.utils.formatters import time_to_seconds
 
 
@@ -39,9 +38,8 @@ def stream_markup_timer(_, chat_id, played, dur):
     if remaining_sec < 0:
         remaining_sec = 0
 
-    rem_min = remaining_sec // 60
-    rem_sec = remaining_sec % 60
-    remaining = f"{rem_min:02d}:{rem_sec:02d}"
+    remaining_sec // 60
+    remaining_sec % 60
 
     percentage = (played_sec / duration_sec) * 100 if duration_sec else 0
     umm = math.floor(percentage)
@@ -73,17 +71,49 @@ def stream_markup_timer(_, chat_id, played, dur):
                 text=f"{played} {bar} {dur}",
                 callback_data="GetTimer",
                 style=ButtonStyle.PRIMARY,
-                icon_custom_emoji_id=5204046146955153467
+                icon_custom_emoji_id=5204046146955153467,
             )
         ],
         [
-            InlineKeyboardButton(text="▷", callback_data=f"ADMIN Resume|{chat_id}", style=ButtonStyle.PRIMARY, icon_custom_emoji_id=5408832111773757273),
-            InlineKeyboardButton(text="II", callback_data=f"ADMIN Pause|{chat_id}", style=ButtonStyle.PRIMARY, icon_custom_emoji_id=5408832111773757273),
-            InlineKeyboardButton(text="‣‣I", callback_data=f"ADMIN Skip|{chat_id}", style=ButtonStyle.PRIMARY, icon_custom_emoji_id=5408832111773757273),
-            InlineKeyboardButton(text="↻", callback_data=f"ADMIN Replay|{chat_id}", style=ButtonStyle.PRIMARY, icon_custom_emoji_id=5408832111773757273),
-            InlineKeyboardButton(text="▢", callback_data=f"ADMIN Stop|{chat_id}", style=ButtonStyle.PRIMARY, icon_custom_emoji_id=5408832111773757273),
+            InlineKeyboardButton(
+                text="▷",
+                callback_data=f"ADMIN Resume|{chat_id}",
+                style=ButtonStyle.PRIMARY,
+                icon_custom_emoji_id=5408832111773757273,
+            ),
+            InlineKeyboardButton(
+                text="II",
+                callback_data=f"ADMIN Pause|{chat_id}",
+                style=ButtonStyle.PRIMARY,
+                icon_custom_emoji_id=5408832111773757273,
+            ),
+            InlineKeyboardButton(
+                text="‣‣I",
+                callback_data=f"ADMIN Skip|{chat_id}",
+                style=ButtonStyle.PRIMARY,
+                icon_custom_emoji_id=5408832111773757273,
+            ),
+            InlineKeyboardButton(
+                text="↻",
+                callback_data=f"ADMIN Replay|{chat_id}",
+                style=ButtonStyle.PRIMARY,
+                icon_custom_emoji_id=5408832111773757273,
+            ),
+            InlineKeyboardButton(
+                text="▢",
+                callback_data=f"ADMIN Stop|{chat_id}",
+                style=ButtonStyle.PRIMARY,
+                icon_custom_emoji_id=5408832111773757273,
+            ),
         ],
-        [InlineKeyboardButton(text="ᴄʟᴏsᴇ", callback_data="close", style=ButtonStyle.DANGER, icon_custom_emoji_id=5408832111773757273)],
+        [
+            InlineKeyboardButton(
+                text="ᴄʟᴏsᴇ",
+                callback_data="close",
+                style=ButtonStyle.DANGER,
+                icon_custom_emoji_id=5408832111773757273,
+            )
+        ],
     ]
     return buttons
 
@@ -91,13 +121,45 @@ def stream_markup_timer(_, chat_id, played, dur):
 def stream_markup(_, chat_id):
     buttons = [
         [
-            InlineKeyboardButton(text="▷", callback_data=f"ADMIN Resume|{chat_id}", style=ButtonStyle.PRIMARY, icon_custom_emoji_id=5408832111773757273),
-            InlineKeyboardButton(text="II", callback_data=f"ADMIN Pause|{chat_id}", style=ButtonStyle.PRIMARY, icon_custom_emoji_id=5408832111773757273),
-            InlineKeyboardButton(text="↻", callback_data=f"ADMIN Replay|{chat_id}", style=ButtonStyle.PRIMARY, icon_custom_emoji_id=5408832111773757273),
-            InlineKeyboardButton(text="‣‣I", callback_data=f"ADMIN Skip|{chat_id}", style=ButtonStyle.PRIMARY, icon_custom_emoji_id=5408832111773757273),
-            InlineKeyboardButton(text="▢", callback_data=f"ADMIN Stop|{chat_id}", style=ButtonStyle.PRIMARY, icon_custom_emoji_id=5408832111773757273),
+            InlineKeyboardButton(
+                text="▷",
+                callback_data=f"ADMIN Resume|{chat_id}",
+                style=ButtonStyle.PRIMARY,
+                icon_custom_emoji_id=5408832111773757273,
+            ),
+            InlineKeyboardButton(
+                text="II",
+                callback_data=f"ADMIN Pause|{chat_id}",
+                style=ButtonStyle.PRIMARY,
+                icon_custom_emoji_id=5408832111773757273,
+            ),
+            InlineKeyboardButton(
+                text="↻",
+                callback_data=f"ADMIN Replay|{chat_id}",
+                style=ButtonStyle.PRIMARY,
+                icon_custom_emoji_id=5408832111773757273,
+            ),
+            InlineKeyboardButton(
+                text="‣‣I",
+                callback_data=f"ADMIN Skip|{chat_id}",
+                style=ButtonStyle.PRIMARY,
+                icon_custom_emoji_id=5408832111773757273,
+            ),
+            InlineKeyboardButton(
+                text="▢",
+                callback_data=f"ADMIN Stop|{chat_id}",
+                style=ButtonStyle.PRIMARY,
+                icon_custom_emoji_id=5408832111773757273,
+            ),
         ],
-        [InlineKeyboardButton(text=_["CLOSE_BUTTON"], callback_data="close", style=ButtonStyle.DANGER, icon_custom_emoji_id=5408832111773757273)],
+        [
+            InlineKeyboardButton(
+                text=_["CLOSE_BUTTON"],
+                callback_data="close",
+                style=ButtonStyle.DANGER,
+                icon_custom_emoji_id=5408832111773757273,
+            )
+        ],
     ]
     return buttons
 
