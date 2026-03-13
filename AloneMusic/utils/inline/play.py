@@ -1,8 +1,8 @@
 import math
-from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
-from AloneMusic import app
-import config
+
 from pyrogram.enums import ButtonStyle
+from pyrogram.types import InlineKeyboardButton
+
 from AloneMusic.utils.formatters import time_to_seconds
 
 
@@ -32,7 +32,7 @@ def stream_markup_timer(_, chat_id, played, dur):
     played_sec = time_to_seconds(played)
     duration_sec = time_to_seconds(dur)
     percentage = (played_sec / duration_sec) * 100
-    
+
     umm = math.floor(percentage)
     if 0 < umm <= 10:
         bar = "|♬—————————|"
@@ -55,38 +55,53 @@ def stream_markup_timer(_, chat_id, played, dur):
     else:
         bar = "|—————————♬|"
     buttons = [
-                [
+        [
             InlineKeyboardButton(
                 text=f"{played} {bar} {dur}",
                 callback_data="GetTimer",
                 style=ButtonStyle.PRIMARY,
-                icon_custom_emoji_id=5204046146955153467
+                icon_custom_emoji_id=5204046146955153467,
             )
         ],
         [
-            InlineKeyboardButton(text="", callback_data=f"ADMIN Resume|{chat_id}", icon_custom_emoji_id=5409222721869459068),
-            InlineKeyboardButton(text="", callback_data=f"ADMIN Pause|{chat_id}", icon_custom_emoji_id=5409042015415448331),
-            InlineKeyboardButton(text="", callback_data=f"ADMIN Stop|{chat_id}", icon_custom_emoji_id=5408832111773757273),
+            InlineKeyboardButton(
+                text="",
+                callback_data=f"ADMIN Resume|{chat_id}",
+                icon_custom_emoji_id=5409222721869459068,
+            ),
+            InlineKeyboardButton(
+                text="",
+                callback_data=f"ADMIN Pause|{chat_id}",
+                icon_custom_emoji_id=5409042015415448331,
+            ),
+            InlineKeyboardButton(
+                text="",
+                callback_data=f"ADMIN Stop|{chat_id}",
+                icon_custom_emoji_id=5408832111773757273,
+            ),
         ],
         [
             InlineKeyboardButton(
                 text="ᴛᴜηєs",
                 url="http://t.me/TidalXMusicBot/tidaltunes",
                 icon_custom_emoji_id=5409025823388741707,
-                style=ButtonStyle.PRIMARY
-                
+                style=ButtonStyle.PRIMARY,
             ),
             InlineKeyboardButton(
                 text="ʜᴏϻє",
                 url="https://t.me/drx_supportchat",
                 icon_custom_emoji_id=5409194306365829029,
-                style=ButtonStyle.PRIMARY
-            
+                style=ButtonStyle.PRIMARY,
+            ),
+        ],
+        [
+            InlineKeyboardButton(
+                text=" ᴄʟᴏsᴇ ▣",
+                callback_data="close",
+                style=ButtonStyle.DANGER,
+                icon_custom_emoji_id=5408832111773757273,
             )
         ],
-            
-
-        [InlineKeyboardButton(text=" ᴄʟᴏsᴇ ▣", callback_data="close", style=ButtonStyle.DANGER, icon_custom_emoji_id=5408832111773757273)],
     ]
     return buttons
 
@@ -94,31 +109,47 @@ def stream_markup_timer(_, chat_id, played, dur):
 def stream_markup(_, chat_id):
     buttons = [
         [
-            InlineKeyboardButton(text="", callback_data=f"ADMIN Resume|{chat_id}", icon_custom_emoji_id=5409222721869459068),
-            InlineKeyboardButton(text="", callback_data=f"ADMIN Pause|{chat_id}", icon_custom_emoji_id=5409042015415448331),
-            InlineKeyboardButton(text="", callback_data=f"ADMIN Stop|{chat_id}", icon_custom_emoji_id=5408832111773757273),
+            InlineKeyboardButton(
+                text="",
+                callback_data=f"ADMIN Resume|{chat_id}",
+                icon_custom_emoji_id=5409222721869459068,
+            ),
+            InlineKeyboardButton(
+                text="",
+                callback_data=f"ADMIN Pause|{chat_id}",
+                icon_custom_emoji_id=5409042015415448331,
+            ),
+            InlineKeyboardButton(
+                text="",
+                callback_data=f"ADMIN Stop|{chat_id}",
+                icon_custom_emoji_id=5408832111773757273,
+            ),
         ],
         [
             InlineKeyboardButton(
                 text="ᴛᴜηєs",
                 url="http://t.me/TidalXMusicBot/tidaltunes",
-                 icon_custom_emoji_id=5409025823388741707,
-                style=ButtonStyle.PRIMARY
-                
+                icon_custom_emoji_id=5409025823388741707,
+                style=ButtonStyle.PRIMARY,
             ),
             InlineKeyboardButton(
                 text="ʜᴏϻє",
                 url="https://t.me/drx_supportchat",
                 icon_custom_emoji_id=5409194306365829029,
-                style=ButtonStyle.PRIMARY
-            
+                style=ButtonStyle.PRIMARY,
+            ),
+        ],
+        [
+            InlineKeyboardButton(
+                text=" ᴄʟᴏsᴇ ▣",
+                callback_data="close",
+                style=ButtonStyle.DANGER,
+                icon_custom_emoji_id=5408832111773757273,
             )
         ],
-            
-
-        [InlineKeyboardButton(text=" ᴄʟᴏsᴇ ▣", callback_data="close", style=ButtonStyle.DANGER, icon_custom_emoji_id=5408832111773757273)],
     ]
     return buttons
+
 
 def playlist_markup(_, videoid, user_id, ptype, channel, fplay):
     buttons = [
